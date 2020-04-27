@@ -1,0 +1,38 @@
+# depslib dependency file v1.0
+1587986616 source:c:\users\spacejourney\documents\github\projet-piscine\arrete.cpp
+	"Arrete.h"
+
+1587986630 c:\users\spacejourney\documents\github\projet-piscine\arrete.h
+
+1587989021 source:c:\users\spacejourney\documents\github\projet-piscine\graphe.cpp
+	"Graphe.h"
+
+1587984423 c:\users\spacejourney\documents\github\projet-piscine\graphe.h
+	"Sommet.h"
+
+1587986701 c:\users\spacejourney\documents\github\projet-piscine\sommet.h
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+	<queue>
+	<stack>
+	"Arrete.h"
+
+1587936810 source:c:\users\spacejourney\documents\github\projet-piscine\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+	"Graphe.h"
+
+1587937609 source:c:\users\spacejourney\documents\github\projet-piscine\misc.cpp
+	"Graphe.h"
+
+1587986667 source:c:\users\spacejourney\documents\github\projet-piscine\sommet.cpp
+	"Sommet.h"
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+
