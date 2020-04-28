@@ -22,10 +22,12 @@ Graphe::Graphe(std::string name_f)
     std::string const Fichier(name_f);
     std::ifstream Flux(Fichier.c_str());
 
-    int id1, id2, poids;
+    int id1, id2, poids, coordx, coordy, ida, s1, s2;
     int TempSommetID;
     Sommet* mem1;
     Sommet* mem2;
+std::string nom;
+
 
     if(Flux)
     {
@@ -34,15 +36,24 @@ Graphe::Graphe(std::string name_f)
         for(int i = 0; i < m_ordre; i++)
         {
             Flux >> TempSommetID;
-            m_sommets.push_back(new Sommet(TempSommetID));
+            Flux >> nom;
+            Flux >> coordx;
+            Flux >> coordy;
+            m_sommets.push_back(new Sommet(TempSommetID, nom, coordx, coordy));
         }
 
         Flux >> m_taille;
         for(int i = 0; i < m_taille; i++)
         {
+            Flux >> ida;
             Flux >> id1;
             Flux >> id2;
-            Flux >> poids;
+
+/*for(size_t k=0; k < m_sommets.size(); k++)
+            {
+
+            }*/
+
 
             for(size_t k=0; k < m_sommets.size(); k++)
             {
@@ -60,13 +71,13 @@ Graphe::Graphe(std::string name_f)
             }
             if(m_orientation==0)
             {
-                mem1->ajouter_adj(id2, poids, 1);  //Chacun des 2 sommets a une arrete qui pointe vers l'autre
-                mem2->ajouter_adj(id1, poids, 1);
+                mem1->ajouter_adj(id2, poids, 1, ida);  //Chacun des 2 sommets a une arrete qui pointe vers l'autre
+                mem2->ajouter_adj(id1, poids, 1, ida);
             }
             else
             {
-                mem1->ajouter_adj(id2, poids, 1); //Le sommet 1 a une arrete qui pointe vers le sommet 2
-                mem2->ajouter_adj(id1, poids, 0); //Le sommet 2 a une arrete qui pars du sommet 1 et qui pointe vers lui
+                mem1->ajouter_adj(id2, poids, 1, ida); //Le sommet 1 a une arrete qui pointe vers le sommet 2
+                mem2->ajouter_adj(id1, poids, 0, ida); //Le sommet 2 a une arrete qui pars du sommet 1 et qui pointe vers lui
             }
 
         }
@@ -117,9 +128,16 @@ void Graphe::afficher() const
 
     for(int i = 0; i < m_sommets.size(); i++)
         {
-            std::cout<< "     Sommet " <<m_sommets[i]->get_id() << " : ";
+            std::cout<< "     Sommet " <<m_sommets[i]->get_nom() << " : ";
             m_sommets[i]->afficher_adj(m_orientation);
+           // std::cout<< " ses coordonnees " << m_sommets[i]->get_coordx << " " << m_sommets[i]->get_coordy;
         }
+        for(int i = 0; i < m_sommets.size(); i++)
+        {
+            std::cout<< " coordonnees du sommet " <<m_sommets[i]->get_nom() << " sont : ";
+            std::cout << m_sommets[i]->get_coordx() << " , " << m_sommets[i]->get_coordy()<< std::endl;
+        }
+
 }
 
 std::vector<Sommet*> Graphe::BFS(int nb, Sommet* white)

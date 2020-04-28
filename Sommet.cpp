@@ -8,15 +8,34 @@ Sommet::Sommet()
 {
 }
 
-Sommet::Sommet(int id)
+Sommet::Sommet(int id, std::string nom, int coordx, int coordy)
 {
     m_id=id;
+    m_nom=nom;
+    m_coordx=coordx;
+    m_coordy=coordy;
 }
 
 Sommet::~Sommet()
 {
     //dtor
 }
+
+std::string Sommet::get_nom()
+{
+    return m_nom;
+}
+
+int Sommet::get_coordx()
+{
+    return m_coordx;
+}
+
+int Sommet::get_coordy()
+{
+    return m_coordy;
+}
+
 
 int Sommet::get_id()
 {
@@ -45,9 +64,9 @@ void Sommet::afficher_adj(int nb)
     std::cout << std::endl;
 }
 
-void Sommet::ajouter_adj(int id, int poids, int dir)
+void Sommet::ajouter_adj(int id, int poids, int dir, int ida)
 {
-    m_adj.push_back(new Arrete(id, poids, dir));
+    m_adj.push_back(new Arrete(id, poids, dir, ida));
 }
 
 std::vector<Arrete*> Sommet::get_adj()

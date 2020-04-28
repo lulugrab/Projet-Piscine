@@ -1,6 +1,8 @@
 #ifndef GRAPHE_H
 #define GRAPHE_H
 #include "Sommet.h"
+#include "Arrete.h"
+
 
 class Graphe
 {

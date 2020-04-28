@@ -12,15 +12,21 @@ class Sommet
 {
     public:
         Sommet();
-        Sommet(int id);
+        Sommet(int id, std::string nom, int coordx, int coordy);
         virtual ~Sommet();
         int get_id();
-        void ajouter_adj(int id, int poids, int dir);
+        int get_coordx();
+        int get_coordy();
+        std::string get_nom();
+        void ajouter_adj(int id, int poids, int dir, int ida);
         void afficher_adj(int nb);
         std::vector<Arrete*> get_adj();
 
     protected:
         int m_id;
+        int m_coordx;
+        int m_coordy;
+        std::string m_nom;
         std::vector<Arrete*> m_adj;
 
 };
