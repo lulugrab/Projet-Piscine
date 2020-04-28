@@ -4,7 +4,7 @@
 #include <vector>
 #include "Graphe.h"
 
-
+void svgTest();
 
 int main()
 {
@@ -25,7 +25,8 @@ int main()
         std::cout << "3/ Recherche DFS" << std::endl;
         std::cout << "4/ Afficher composantes connexes" << std::endl;
         std::cout << "5/ Afficher chaine/cycle eulerien" << std::endl;
-        std::cout << "6/ Quitter" << std::endl;
+        std::cout << "6/ SVG" << std::endl;
+        std::cout << "7/ Quitter" << std::endl;
         std::cin >> choice;
         std::cout << std::endl;
         switch(choice)
@@ -101,6 +102,11 @@ int main()
                 break;
 
             case 6 :
+
+                svgTest();
+                break;
+
+            case 7 :
                 exit=1;
                 std::cout << "Bonne journee !" << std::endl;
                 break;
@@ -109,3 +115,28 @@ int main()
     }
     return 0;
 }
+
+/// Code initial pour comprendre les ajouts de primitives
+void svgTest()
+{
+    int width = 1000;
+    int height = 800;
+    /// Sortie graphique dans le fichier output.svg
+    /// ( options à voir svgfile.h ligne 23 )
+    Svgfile svgout;
+
+    /// Dessin du repère cartésien
+     svgout.addGrid(50.0,0);
+
+    /// Dessins de sommets
+    svgout.addDisk(50,50, 10, "black");
+    svgout.addDisk(100,50, 10, "black");
+
+    /// Dessins de l'arete
+    svgout.addLine(50,50,100,50,"black");
+
+
+    /// L'objet svgout est automatiquement libéré à la sortie
+    /// de ce sous-programme : le fichier output.svg est alors fermé
+}
+
