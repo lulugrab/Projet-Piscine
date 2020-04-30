@@ -51,10 +51,7 @@ std::string nom;
             Flux >> id1;
             Flux >> id2;
 
-/*for(size_t k=0; k < m_sommets.size(); k++)
-            {
 
-            }*/
 
 
             for(size_t k=0; k < m_sommets.size(); k++)

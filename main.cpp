@@ -3,11 +3,13 @@
 #include <string>
 #include <vector>
 #include "Graphe.h"
+#include "Sommet.h"
 
 void svgTest();
 
 int main()
 {
+    Svgfile svgout;
     int choice, origine;
     int exit=0;
     std::vector<Sommet*> prec;
@@ -15,6 +17,7 @@ int main()
     std::vector<int> ChCyEuler;
     Sommet* white;
     Graphe G("Fichier.txt");
+
     std::cout << "      Bonjour" << std::endl;
 
     while(exit!=1)
@@ -128,8 +131,9 @@ void svgTest()
     /// Dessin du repère cartésien
      svgout.addGrid(50.0,0);
 
+
     /// Dessins de sommets
-    svgout.addDisk(50,50, 10, "black");
+    svgout.addDisk(m_sommets[1].getcoordx,50, 10, "black");
     svgout.addDisk(100,50, 10, "black");
 
     /// Dessins de l'arete
